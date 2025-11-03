@@ -1,0 +1,17 @@
+# Claude Code Ignore File
+# Files and directories that Claude should not read or modify
+
+# Images - large binary files
+images/*.jpg
+images/*.png
+images/*.gif
+images/*.svg
+
+# Compiled/minified CSS
+css/main.css
+
+# Git directory
+.git/
+
+# Build artifacts
+mix-manifest.json
