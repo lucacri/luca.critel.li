@@ -1,31 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Luca Critelli</title>
-    <link rel="stylesheet" href="/css/main.css" />
+    <title>Luca Critelli - Resume</title>
+
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="Resume of Luca Critelli - Entrepreneur, programmer, and CTO with expertise in PHP, Laravel, VueJS, and modern web technologies." />
+    <meta name="author" content="Luca Critelli" />
+    <meta name="theme-color" content="#667eea" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Google Fonts with modern display strategy -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS v3.4 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Lato', 'sans-serif'],
+            },
+            transitionProperty: {
+              'height': 'height',
+              'spacing': 'margin, padding',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Legacy CSS for body background -->
+    <style>
+      body {
+        background: #f4f4f4 url(data:image/png;base64,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);
+        letter-spacing: 1px;
+      }
+
+      .link {
+        color: #3182ce;
+      }
+
+      .link:hover {
+        color: #2c5282;
+        text-decoration: underline;
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #1a202c;
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+
+    <!-- Dark mode initialization script -->
+    <script>
+      // Initialize dark mode based on system preference or saved preference
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
   </head>
   <body>
-    <div class="bg-white shadow sticky w-full">
+    <div class="bg-white dark:bg-slate-800 shadow sticky top-0 z-50 w-full">
       <div class="container mx-auto">
         <div
-          class="flex content-center items-center justify-center uppercase text-gray-600 text-sm font-normal"
+          class="flex content-center items-center justify-center uppercase text-gray-600 dark:text-gray-300 text-sm font-normal relative"
         >
+          <!-- Dark Mode Toggle -->
+          <button
+            id="theme-toggle"
+            type="button"
+            class="absolute left-4 p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
+            aria-label="Toggle dark mode"
+          >
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+
           <a
             href="/#whoiam"
-            class="p-3 hover:bg-indigo-400 hover:text-white hover:underline"
+            class="p-3 hover:bg-indigo-400 hover:text-white hover:underline transition-colors duration-200"
             >Who I Am</a
           >
           <a
             href="/#whatido"
-            class="p-3 mx-2 md:mx-20 hover:bg-indigo-400 hover:text-white hover:underline"
+            class="p-3 mx-2 md:mx-20 hover:bg-indigo-400 hover:text-white hover:underline transition-colors duration-200"
             >What I Do</a
           >
           <a
             href="/#myprojects"
-            class="p-3 hover:bg-indigo-400 hover:text-white hover:underline"
+            class="p-3 hover:bg-indigo-400 hover:text-white hover:underline transition-colors duration-200"
             >My Projects</a
           >
         </div>
@@ -39,7 +133,7 @@
           style="min-height: 300px; background-image: url('/images/mbp.jpg');"
         >
           <div class="shadow" style="margin-bottom: -20px">
-            <img src="/images/me.jpg" alt="Luca Critelli" />
+            <img src="/images/me.jpg" alt="Luca Critelli - Profile Photo" loading="eager" decoding="async" width="200" height="200" />
           </div>
           <div
             class="text-white text-6xl ml-8 leading-none"
@@ -51,7 +145,8 @@
         <div class="bg-white text-right px-4 ">
           <a
             href="mailto:site@critel.li"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="Email Luca Critelli"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-envelop"></use>
@@ -60,7 +155,8 @@
 
           <a
             href="https://www.facebook.com/lucacri"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="Facebook Profile"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-facebook"></use>
@@ -69,7 +165,8 @@
 
           <a
             href="https://github.com/lucacri"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="GitHub Profile"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-github"></use>
@@ -78,7 +175,8 @@
 
           <a
             href="https://twitter.com/lucacri"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="Twitter Profile"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-twitter"></use>
@@ -87,7 +185,8 @@
 
           <a
             href="https://it.linkedin.com/in/lucacritelli/"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="LinkedIn Profile"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-linkedin"></use>
@@ -96,7 +195,8 @@
 
           <a
             href="https://www.youtube.com/user/lucacri"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="YouTube Channel"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-youtube"></use>
@@ -105,7 +205,8 @@
 
           <a
             href="skype:lucacri-ita?chat"
-            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block"
+            class="py-2 text-gray-600 hover:bg-blue-500 hover:text-white px-1 md:px-2 inline-block transition-colors duration-200"
+            aria-label="Skype Contact"
             ><div class="flex items-center">
               <svg viewBox="0 0 32 32" class="fill-current h-4 w-4 inline">
                 <use xlink:href="#icon-skype"></use>
@@ -577,10 +678,46 @@
         </symbol>
       </defs>
     </svg>
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"
-      rel="stylesheet"
-      type="text/css"
-    />
+
+    <!-- Dark mode toggle script -->
+    <script>
+      var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+      var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+      // Change the icons inside the button based on previous settings
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+      } else {
+        themeToggleDarkIcon.classList.remove('hidden');
+      }
+
+      var themeToggleBtn = document.getElementById('theme-toggle');
+
+      themeToggleBtn.addEventListener('click', function() {
+        // toggle icons inside button
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        // if set via local storage previously
+        if (localStorage.getItem('theme')) {
+          if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          }
+        // if NOT set via local storage previously
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        }
+      });
+    </script>
   </body>
 </html>
